@@ -6,6 +6,7 @@ public class GroupChat
 	private static final String TERMINATE = "Exit"; 
 	static String name; 
 	static volatile boolean finished = false; 
+    static volatile boolean accept = false; 
 	public static void main(String[] args) 
 	{ 
 		if (args.length != 2) 
@@ -40,10 +41,20 @@ public class GroupChat
 					message = sc.nextLine(); 
 					if(message.equalsIgnoreCase(GroupChat.TERMINATE)) 
 					{ 
-						finished = true; 
-						socket.leaveGroup(group); 
-						socket.close(); 
-						break; 
+						finished = true;
+                        System.out.println("You wanna leave.Choose yes or no!");
+                        String ans=sc.nextLine();
+                        if(ans.equalsIgnoreCase("yes")){
+                            accept = true;
+                        } else{
+                           finished = false; 
+                           continue;
+                        }
+                        if(accept){
+                            socket.leaveGroup(group); 
+						    socket.close(); 
+                            break; 
+                        }
 					} 
 					message = name + ": " + message; 
 					byte[] buffer = message.getBytes(); 
