@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Group Chat</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div id="chat-window">
+        <div id="message-area">
+            <ul id="message-list">
+                <!-- Messages will be dynamically added here -->
+            </ul>
+        </div>
+        <div id="input-area">
+            <input type="text" id="name-input" placeholder="Enter your name..." />
+            <button id="name-button">Set Name</button>
+            <input type="text" id="message-input" placeholder="Type your message..." />
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script th:src="@{/js/cdnjs/stomp.min.js}"></script>
+    <script th:src="@{/js/chat.js}"></script>
+</body>
+</html>
